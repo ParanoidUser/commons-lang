@@ -856,8 +856,8 @@ public class StringUtilsTest extends AbstractLangTest {
     public void testGetBytes_String() throws UnsupportedEncodingException {
         assertEquals(ArrayUtils.EMPTY_BYTE_ARRAY, StringUtils.getBytes(null, (String) null));
         assertArrayEquals(StringUtils.EMPTY.getBytes(), StringUtils.getBytes(StringUtils.EMPTY, (String) null));
-        assertArrayEquals(StringUtils.EMPTY.getBytes(StandardCharsets.US_ASCII.name()),
-            StringUtils.getBytes(StringUtils.EMPTY, StandardCharsets.US_ASCII.name()));
+        assertArrayEquals(StringUtils.EMPTY.getBytes(StandardCharsets.US_ASCII),
+            StringUtils.getBytes(StringUtils.EMPTY, StandardCharsets.US_ASCII));
     }
 
     @Test

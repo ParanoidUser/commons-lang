@@ -339,10 +339,9 @@ public class MethodUtils {
         // search through all methods
         final Method[] methods = cls.getMethods();
         final List<Method> matchingMethods = Stream.of(methods)
-            .filter(method -> method.getName().equals(methodName) && MemberUtils.isMatchingMethod(method, parameterTypes)).collect(Collectors.toList());
+                .filter(method -> method.getName().equals(methodName) && MemberUtils.isMatchingMethod(method, parameterTypes)).sorted(METHOD_BY_SIGNATURE).collect(Collectors.toList());
 
         // Sort methods by signature to force deterministic result
-        matchingMethods.sort(METHOD_BY_SIGNATURE);
 
         Method bestMatch = null;
         for (final Method method : matchingMethods) {
@@ -822,7 +821,7 @@ public class MethodUtils {
         final String messagePrefix;
         final Method method;
 
-        final Class<? extends Object> cls = object.getClass();
+        final Class<?> cls = object.getClass();
         if (forceAccess) {
             messagePrefix = "No such method: ";
             method = getMatchingMethod(cls, methodName, parameterTypes);

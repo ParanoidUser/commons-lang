@@ -33,7 +33,7 @@ public class Suppliers {
      * </p>
      */
     @SuppressWarnings("rawtypes")
-    private static Supplier NUL = () -> null;
+    private final static Supplier NUL = () -> null;
 
     /**
      * Null-safe call to {@link Supplier#get()}.
